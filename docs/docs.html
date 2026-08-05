@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,9 +30,9 @@
                         'sans': ['Inter', 'system-ui', 'sans-serif']
                     },
                     colors: {
-                        'premium-yellow': '#FBBF24',
-                        'premium-orange': '#F97316',
-                        'neutral-dark': '#333333',
+                        'premium-blue': '#3B82F6',
+                        'premium-cyan': '#06B6D4',
+                        'neutral-dark': '#111827',
                         'neutral-light': '#D1D5DB'
                     }
                 }
@@ -115,16 +115,16 @@
             height: 100%;
             min-height: 100vh;
             z-index: -1;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
             pointer-events: none;
         }
         .bg-gradient-premium {
-            background: linear-gradient(to right, #FBBF24, #F97316);
+            background: linear-gradient(to right, #3B82F6, #06B6D4);
         }
         .hover\:shadow-premium:hover {
-            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
         }
         .text-premium {
             color: #D1D5DB;
@@ -142,7 +142,7 @@
             position: absolute;
             bottom: 0;
             height: 2px;
-            background-color: #F97316;
+            background-color: #3B82F6;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         pre code.hljs {
@@ -152,107 +152,103 @@
     </style>
 </head>
 <body class="bg-[#000000] text-premium antialiased font-sans min-h-screen">
-    <!-- Loader -->
     <div id="loader">
-        <span class="loading-text">Loading</span>
+        <span class="loading-text">Chargement</span>
     </div>
-    <!-- Sidebar -->
     <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-[#000000] z-[60] transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out overflow-y-auto shadow-2xl border-r border-neutral-dark">
         <div class="py-4 px-4 flex justify-between items-center border-b border-neutral-dark">
-            <h3 class="text-lg font-semibold text-white">API Categories</h3>
-            <button onclick="closeSidebar()" class="text-gray-400 hover:text-white lg:hidden" aria-label="Close Sidebar">
+            <h3 class="text-lg font-semibold text-white">Catégories d'API</h3>
+            <button onclick="closeSidebar()" class="text-gray-400 hover:text-white lg:hidden" aria-label="Fermer le menu">
                 <i class="fas fa-times text-xl"></i>
             </button>
         </div>
         <div id="sidebarContent" class="pt-4 px-4 space-y-3"></div>
     </div>
-    <!-- Overlay -->
     <div id="overlay" class="fixed inset-0 bg-black/50 hidden lg:hidden z-[50]" onclick="closeSidebar()"></div>
-    <!-- Notification Panel -->
     <div id="notificationPanel" class="hidden fixed top-12 right-0 bg-[#000000] border border-neutral-dark p-4 z-[60] shadow-2xl rounded-xl w-80 max-h-96 overflow-y-auto transition-all">
         <div class="flex justify-between items-center mb-4">
             <h4 class="text-base font-semibold text-white">Notifications</h4>
-            <button id="clearNotifications" class="text-premium-yellow text-sm font-medium hover:text-premium-orange transition-colors">Mark all as read</button>
+            <button id="clearNotifications" class="text-premium-blue text-sm font-medium hover:text-premium-cyan transition-colors">Tout marquer comme lu</button>
         </div>
         <div id="notifContent" class="space-y-4"></div>
     </div>
     <header class="sticky top-0 z-50 bg-[#000000] border-b border-neutral-dark py-4 shadow-md">
         <div class="max-w-2xl mx-auto lg:ml-[calc(50%-16rem)] lg:max-w-3xl lg:mr-auto flex items-center px-4 lg:px-0 relative">
-            <button onclick="toggleSidebar()" class="pl-2 transition-all hover:scale-110 lg:hidden" aria-label="Open Sidebar">
+            <button onclick="toggleSidebar()" class="pl-2 transition-all hover:scale-110 lg:hidden" aria-label="Ouvrir le menu">
                 <i class="fas fa-bars text-white text-xl"></i>
             </button>
-            <h1 class="text-lg font-bold text-white absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0 lg:ml-0">Dashboard</h1>
+            <h1 class="text-lg font-bold text-white absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0 lg:ml-0">Tableau de bord</h1>
             <div class="flex-grow"></div>
             <button onclick="toggleNotifications()" class="relative transition-all hover:scale-110 pr-2" aria-label="Notifications">
     <i class="fas fa-bell text-white text-xl"></i>
-    <span id="notifBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1 hidden"></span>
+    <span id="notifBadge" class="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full px-1 hidden"></span>
             </button>
         </div>
     </header>
     <main class="max-w-2xl mx-auto lg:ml-[calc(50%-16rem)] lg:max-w-3xl lg:mr-auto px-6 py-8 lg:px-8">
         <div class="text-center mb-8">
-            <img id="headerImage" src="" alt="Header" class="mx-auto rounded-xl mb-6 w-[80%] md:w-[40%] lg:w-[40%]">
+            <img id="headerImage" src="" alt="En-tête" class="mx-auto rounded-xl mb-6 w-[80%] md:w-[40%] lg:w-[40%]">
             <h2 id="apiTitle" class="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-premium"></h2>
             <p id="apiDescription" class="text-base text-neutral-light mb-6"></p>
-            <div class="inline-flex items-center bg-green-900/50 text-green-400 px-4 py-2 rounded-full text-sm font-medium mx-auto">
-                <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+            <div class="inline-flex items-center bg-blue-950/50 text-blue-400 px-4 py-2 rounded-full text-sm font-medium mx-auto border border-blue-900/50">
+                <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
                 <span id="apiStatus"></span>
             </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div class="bg-[#000000] rounded-lg p-6 border border-neutral-dark shadow-xl transition-all hover:shadow-premium">
                 <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-lg font-medium bg-clip-text text-transparent bg-gradient-premium">Total APIs</h3>
-                    <i class="fa-regular fa-clipboard text-premium-yellow text-xl"></i>
+                    <h3 class="text-lg font-medium bg-clip-text text-transparent bg-gradient-premium">Total des APIs</h3>
+                    <i class="fa-regular fa-clipboard text-premium-blue text-xl"></i>
                 </div>
                 <div class="flex items-baseline">
                     <span id="totalEndpoints" class="text-2xl font-bold text-white"></span>
-                    <span class="text-sm text-gray-500 ml-1">endpoints</span>
+                    <span class="text-sm text-gray-500 ml-1">points d'accès</span>
                 </div>
             </div>
             <div class="bg-[#000000] rounded-lg p-6 border border-neutral-dark shadow-xl transition-all hover:shadow-premium">
                 <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-lg font-medium bg-clip-text text-transparent bg-gradient-premium">Categories</h3>
-                    <i class="fa-solid fa-layer-group text-green-400 text-xl"></i>
+                    <h3 class="text-lg font-medium bg-clip-text text-transparent bg-gradient-premium">Catégories</h3>
+                    <i class="fa-solid fa-layer-group text-blue-400 text-xl"></i>
                 </div>
                 <div class="flex items-baseline">
                     <span id="totalCategories" class="text-2xl font-bold text-white"></span>
-                    <span class="text-sm text-gray-500 ml-1">groups</span>
+                    <span class="text-sm text-gray-500 ml-1">groupes</span>
                 </div>
             </div>
         </div>
         <div class="bg-[#000000] border border-neutral-dark p-6 mb-6 rounded-lg shadow-md transition-all hover:shadow-premium">
             <p class="text-sm text-neutral-light mb-3">
-                Our API provides public endpoints that return JSON responses. No authentication required.
+                Notre API fournit des points d'accès publics qui renvoient des réponses JSON. Aucune authentification requise.
             </p>
             <div class="bg-[#000000] border border-neutral-dark p-4 rounded-md">
-                <p class="text-xs text-gray-500 uppercase tracking-wide">Base URL</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">URL de base</p>
                 <code id="baseUrl" class="text-sm text-white font-mono"></code>
             </div>
         </div>
         <div id="exampleEndpoint" class="bg-[#000000] border border-neutral-dark p-6 mb-6 rounded-lg shadow-md transition-all hover:shadow-premium">
             <h3 class="text-lg font-medium bg-clip-text text-transparent bg-gradient-premium mb-2">
-                Example Endpoint
+                Exemple de point d'accès
             </h3>
             <p class="text-sm text-gray-400 mb-4">
-                Example showing request format, parameters, and responses.
+                Exemple montrant le format de la requête, les paramètres et les réponses.
             </p>
             <div id="exampleContent"></div>
         </div>
         <div class="bg-[#000000] border border-neutral-dark p-6 mb-6 rounded-lg shadow-md transition-all hover:shadow-premium">
             <h3 class="text-lg font-medium bg-clip-text text-transparent bg-gradient-premium mb-3 flex items-center">
-                Response Format
+                Format de réponse
             </h3>
             <p class="text-sm text-gray-400 mb-3">
-                All responses include operator, timestamp, and responseTime fields.
+                Toutes les réponses incluent les champs operator, timestamp, et responseTime.
             </p>
             <div class="bg-[#000000] text-white font-mono text-xs border border-neutral-dark mb-3 rounded-md">
                 <div class="px-3 py-2 bg-[#000000] border-b border-neutral-dark rounded-t-md">
-                    <span class="text-xs text-gray-500">Output</span>
+                    <span class="text-xs text-gray-500">Sortie</span>
                 </div>
                 <div class="p-4">
                     <pre class="text-white text-xs m-0 whitespace-pre-wrap"><code class="language-json" id="responseFormatCode">{
-  "operator": "AjiroDesu",
+  "operator": "Célestin",
   "timestamp": "2025-12-27T10:43:41.675Z",
   "responseTime": "4ms",
   ...
@@ -260,59 +256,59 @@
                 </div>
             </div>
             <p class="text-xs text-gray-400">
-                The additional fields depend on the endpoint.
+                Les champs supplémentaires dépendent du point d'accès.
             </p>
         </div>
         <div class="bg-[#000000] border border-neutral-dark p-6 mb-6 rounded-lg shadow-md transition-all hover:shadow-premium">
             <h3 class="text-lg font-medium bg-clip-text text-transparent bg-gradient-premium mb-3">
-                Error Codes
+                Codes d'erreur
             </h3>
             <p class="text-sm text-gray-400 mb-4">
-                Common HTTP status codes you may encounter:
+                Codes de statut HTTP courants que vous pourriez rencontrer :
             </p>
             <div class="space-y-3">
-                <div class="bg-[#000000] border border-[#2E2E2E] p-4 rounded-md">
+                <div class="bg-[#000000] border border-[#1E293B] p-4 rounded-md">
                     <div class="flex items-start gap-3">
-                        <span class="font-mono text-sm text-green-400 font-medium">200</span>
+                        <span class="font-mono text-sm text-blue-400 font-medium">200</span>
                         <div>
-                            <p class="text-sm text-white font-medium mb-1">Success</p>
-                            <p class="text-xs text-gray-400">Request processed successfully.</p>
+                            <p class="text-sm text-white font-medium mb-1">Succès</p>
+                            <p class="text-xs text-gray-400">Requête traitée avec succès.</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-[#000000] border border-[#2E2E2E] p-4 rounded-md">
+                <div class="bg-[#000000] border border-[#1E293B] p-4 rounded-md">
                     <div class="flex items-start gap-3">
                         <span class="font-mono text-sm text-yellow-400 font-medium">400</span>
                         <div>
-                            <p class="text-sm text-white font-medium mb-1">Bad Request</p>
-                            <p class="text-xs text-gray-400">Invalid parameters or missing required fields.</p>
+                            <p class="text-sm text-white font-medium mb-1">Mauvaise requête</p>
+                            <p class="text-xs text-gray-400">Paramètres invalides ou champs requis manquants.</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-[#000000] border border-[#2E2E2E] p-4 rounded-md">
+                <div class="bg-[#000000] border border-[#1E293B] p-4 rounded-md">
                     <div class="flex items-start gap-3">
-                        <span class="font-mono text-sm text-orange-400 font-medium">404</span>
+                        <span class="font-mono text-sm text-cyan-400 font-medium">404</span>
                         <div>
-                            <p class="text-sm text-white font-medium mb-1">Not Found</p>
-                            <p class="text-xs text-gray-400">Endpoint doesn't exist. Check URL and method.</p>
+                            <p class="text-sm text-white font-medium mb-1">Non trouvé</p>
+                            <p class="text-xs text-gray-400">Le point d'accès n'existe pas. Vérifiez l'URL et la méthode.</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-[#000000] border border-[#2E2E2E] p-4 rounded-md">
+                <div class="bg-[#000000] border border-[#1E293B] p-4 rounded-md">
                     <div class="flex items-start gap-3">
                         <span class="font-mono text-sm text-red-400 font-medium">429</span>
                         <div>
-                            <p class="text-sm text-white font-medium mb-1">Too Many Requests</p>
-                            <p class="text-xs text-gray-400">Rate limit exceeded. Wait before retrying.</p>
+                            <p class="text-sm text-white font-medium mb-1">Trop de requêtes</p>
+                            <p class="text-xs text-gray-400">Limite de débit dépassée. Attendez avant de réessayer.</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-[#000000] border border-[#2E2E2E] p-4 rounded-md">
+                <div class="bg-[#000000] border border-[#1E293B] p-4 rounded-md">
                     <div class="flex items-start gap-3">
                         <span class="font-mono text-sm text-red-400 font-medium">503</span>
                         <div>
-                            <p class="text-sm text-white font-medium mb-1">Service Unavailable</p>
-                            <p class="text-xs text-gray-400">Temporarily unavailable. Try again later.</p>
+                            <p class="text-sm text-white font-medium mb-1">Service indisponible</p>
+                            <p class="text-xs text-gray-400">Temporairement indisponible. Réessayez plus tard.</p>
                         </div>
                     </div>
                 </div>
@@ -323,27 +319,27 @@
         <div class="max-w-2xl mx-auto lg:ml-[calc(50%-16rem)] lg:max-w-3xl lg:mr-auto px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                    <h3 class="font-semibold text-white mb-3">About</h3>
+                    <h3 class="font-semibold text-white mb-3">À propos</h3>
                     <p id="aboutText" class="text-sm text-neutral-light leading-relaxed">
-                        This interactive interface allows you to explore and test our comprehensive collection of API endpoints in real-time.
+                        Cette interface interactive vous permet d'explorer et de tester notre collection complète de points d'accès API en temps réel.
                     </p>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-white mb-3">Connect</h3>
+                    <h3 class="font-semibold text-white mb-3">Connexion</h3>
                     <div class="flex gap-3">
-                        <a id="telegramLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-600 text-neutral-light hover:text-white transition-all">
+                        <a id="telegramLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-800 text-neutral-light hover:text-white transition-all">
                             <i class="fab fa-telegram-plane text-lg"></i>
                         </a>
-                        <a id="messengerLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-600 text-neutral-light hover:text-white transition-all">
+                        <a id="messengerLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-800 text-neutral-light hover:text-white transition-all">
                             <i class="fab fa-facebook-messenger text-lg"></i>
                         </a>
-                        <a id="githubLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-600 text-neutral-light hover:text-white transition-all">
+                        <a id="githubLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-800 text-neutral-light hover:text-white transition-all">
                             <i class="fab fa-github text-lg"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="pt-8 border-t border-gray-800 text-left">
+            <div class="pt-8 border-t border-gray-900 text-left">
                 <p class="text-sm text-gray-500" id="footerCopyright"></p>
             </div>
         </div>
@@ -361,10 +357,10 @@
         function relativeTime(timestamp) {
             const now = Date.now();
             const diff = now - timestamp;
-            if (diff < 60000) return 'Just Now';
-            if (diff < 3600000) return Math.floor(diff / 60000) + 'm ago';
-            if (diff < 86400000) return Math.floor(diff / 3600000) + 'h ago';
-            if (diff < 604800000) return Math.floor(diff / 86400000) + 'd ago';
+            if (diff < 60000) return 'À l\'instant';
+            if (diff < 3600000) return 'Il y a ' + Math.floor(diff / 60000) + 'm';
+            if (diff < 86400000) return 'Il y a ' + Math.floor(diff / 3600000) + 'h';
+            if (diff < 604800000) return 'Il y a ' + Math.floor(diff / 86400000) + 'j';
             return new Date(timestamp).toLocaleDateString();
         }
         function toggleSidebar() {
@@ -410,7 +406,7 @@
                 notifBadge.textContent = unread.length;
                 notifBadge.classList.remove('hidden');
             } else {
-                notifHtml = '<p class="text-xs text-gray-400 text-center py-4">No notifications yet.</p>';
+                notifHtml = '<p class="text-xs text-gray-400 text-center py-4">Aucune notification pour le moment.</p>';
                 notifBadge.classList.add('hidden');
             }
             notifContent.innerHTML = notifHtml;
@@ -472,7 +468,7 @@
                 document.getElementById('apiDescription').textContent = setData.description;
                 document.getElementById('headerImage').src = setData.header.imageSrc[0];
                 document.getElementById('apiStatus').textContent = setData.header.status;
-                document.getElementById('footerCopyright').textContent = `© ${new Date().getFullYear()} ${setData.name}. All rights reserved.`;
+                document.getElementById('footerCopyright').textContent = `© ${new Date().getFullYear()} ${setData.name}. Tous droits réservés.`;
                 document.getElementById('telegramLink').href = setData.telegram;
                 document.getElementById('messengerLink').href = setData.messenger;
                 document.getElementById('githubLink').href = setData.github;
@@ -487,22 +483,22 @@
                 document.getElementById('totalCategories').textContent = endpoints.length;
                 let sidebarHtml = `
                     <a href="/docs" class="flex items-center px-3 py-1 text-white hover:bg-[#000000] rounded-xl transition-all hover:shadow-sm ${location.pathname === '/docs' ? 'bg-[#000000]' : ''}">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-3 text-premium-yellow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-3 text-premium-blue">
                             <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
                         </svg>
-                        Dashboard
+                        Tableau de bord
                     </a>
                     <div class="border-t border-neutral-dark my-3 -mx-4"></div>
-                    <p class="text-gray-400 text-sm mb-2 font-medium">Available Categories</p>
+                    <p class="text-gray-400 text-sm mb-2 font-medium">Catégories disponibles</p>
                 `;
                 for (const cat of endpoints) {
                     const capitalizedName = cat.name.charAt(0).toUpperCase() + cat.name.slice(1);
                     const slug = cat.name.toLowerCase().replace(/\s+/g, '-');
                     const active = location.pathname === `/category/${slug}`;
                     sidebarHtml += `
-                        <a href="/category/${slug}" class="flex items-center justify-between px-3 py-1 text-white hover:bg-[#000000] rounded-xl transition-all hover:shadow-sm ${active ? 'bg-[#0b0b0b] border-l-4 border-[#eab308] pl-3' : ''}">
+                        <a href="/category/${slug}" class="flex items-center justify-between px-3 py-1 text-white hover:bg-[#000000] rounded-xl transition-all hover:shadow-sm ${active ? 'bg-[#0b0b0b] border-l-4 border-[#3b82f6] pl-3' : ''}">
                             <div class="flex items-center">
-                                <i class="fas fa-folder mr-3 text-premium-yellow"></i>
+                                <i class="fas fa-folder mr-3 text-premium-blue"></i>
                                 ${capitalizedName} (${cat.items.length})
                             </div>
                             <i class="material-icons text-lg text-gray-400">keyboard_arrow_right</i>
@@ -518,7 +514,7 @@
                         notifs = data.notifications || [];
                         updateNotifPanel();
                     } catch (err) {
-                        console.error('Failed to fetch notifications:', err);
+                        console.error('Échec de récupération des notifications:', err);
                     }
                 }, 5000);
                 // Update times every minute
@@ -543,9 +539,9 @@
                     paramsHtml = randomItem.params.map(p => `
                         <div class="text-sm space-y-1">
                             <span class="font-mono font-medium text-gray-200 block">${p.name}</span>
-                            <span class="text-gray-400 text-xs block">Type: string</span>
+                            <span class="text-gray-400 text-xs block">Type: chaîne (string)</span>
                             <p class="text-gray-400 text-xs break-words">${p.desc}</p>
-                            ${p.example ? `<span class="text-gray-500 text-xs block">Example:</span><code class="bg-[#000000] px-1 py-0.5 rounded break-all max-w-full text-xs text-gray-300">${p.example}</code>` : ''}
+                            ${p.example ? `<span class="text-gray-500 text-xs block">Exemple:</span><code class="bg-[#000000] px-1 py-0.5 rounded break-all max-w-full text-xs text-gray-300">${p.example}</code>` : ''}
                         </div>
                     `).join('');
                     const exampleParams = {};
@@ -576,14 +572,14 @@
                     <div id="curl-example" class="endpoint-content mb-3 text-xs">
                         <div class="bg-[#000000] text-white font-mono text-xs border border-neutral-dark rounded-md">
                             <div class="px-3 py-2 bg-[#000000] border-b border-neutral-dark rounded-t-md">
-                                <span class="text-xs text-gray-500">Shell</span>
+                                <span class="text-xs text-gray-500">Terminal</span>
                             </div>
                             <div class="p-4">
                                 <pre class="text-white text-xs m-0"><code class="language-bash">${curlExample}</code></pre>
                             </div>
                         </div>
                         <p class="text-xs text-gray-400 mt-2">
-                            Terminal command - replace parameter values with your data.
+                            Commande terminal - remplacez les valeurs des paramètres par vos données.
                         </p>
                     </div>
                 `;
@@ -605,15 +601,15 @@ fetch('${window.location.origin}${basePath}', {
 })
   .then(response => response.json())
   .then(data => {
-    console.log('Success:', data);
+    console.log('Succès:', data);
   })
   .catch(error => {
-    console.error('Error:', error);
+    console.error('Erreur:', error);
   });</code></pre>
                             </div>
                         </div>
                         <p class="text-xs text-gray-400 mt-2">
-                            JavaScript using Fetch API.
+                            JavaScript utilisant l'API Fetch.
                         </p>
                     </div>
                 `;
@@ -621,9 +617,9 @@ fetch('${window.location.origin}${basePath}', {
                 if (randomItem.params && randomItem.params.length > 0) {
                     paramsSection = `
                         <div class="mb-4">
-                            <h5 class="text-sm font-medium text-white mb-2">Parameters</h5>
+                            <h5 class="text-sm font-medium text-white mb-2">Paramètres</h5>
                             <p class="text-xs text-gray-400 mb-3">
-                                Parameters for the request.
+                                Paramètres pour la requête.
                             </p>
                             <div class="bg-[#000000] border border-neutral-dark p-4 space-y-4 rounded-md overflow-hidden">
                                 ${paramsHtml}
@@ -646,9 +642,9 @@ fetch('${window.location.origin}${basePath}', {
                         </div>
                     </div>
                     <div class="mb-4">
-                        <h5 class="text-sm font-medium text-white mb-2">Request Examples</h5>
+                        <h5 class="text-sm font-medium text-white mb-2">Exemples de requêtes</h5>
                         <p class="text-xs text-gray-400 mb-3">
-                            Choose the method that fits your environment. This endpoint supports ${methodStr} methods.
+                            Choisissez la méthode qui convient à votre environnement. Ce point d'accès prend en charge les méthodes ${methodStr}.
                         </p>
                         ${tabsHtml}
                         ${curlContentHtml}
@@ -691,7 +687,7 @@ fetch('${window.location.origin}${basePath}', {
                 // Make operator dynamic
                 const responseFormatCode = document.getElementById('responseFormatCode');
                 if (responseFormatCode) {
-                    responseFormatCode.innerHTML = responseFormatCode.innerHTML.replace('"AjiroDesu"', `"${setData.operator}"`);
+                    responseFormatCode.innerHTML = responseFormatCode.innerHTML.replace('"AjiroDesu"', `"${setData.operator || 'Célestin'}"`);
                 }
             } finally {
                 loader.classList.add('hidden');
