@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,9 +26,9 @@
                         'sans': ['Inter', 'system-ui', 'sans-serif']
                     },
                     colors: {
-                        'premium-yellow': '#FBBF24',
-                        'premium-orange': '#F97316',
-                        'neutral-dark': '#333333',
+                        'premium-blue': '#3B82F6',
+                        'premium-cyan': '#06B6D4',
+                        'neutral-dark': '#111827',
                         'neutral-light': '#D1D5DB'
                     }
                 }
@@ -119,16 +119,16 @@
             height: 100%;
             min-height: 100vh;
             z-index: -1;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
             pointer-events: none;
         }
         .bg-gradient-premium {
-            background: linear-gradient(to right, #FBBF24, #F97316);
+            background: linear-gradient(to right, #3B82F6, #06B6D4);
         }
         .hover\:shadow-premium:hover {
-            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
         }
         .text-premium {
             color: #D1D5DB;
@@ -145,9 +145,8 @@
     </style>
 </head>
 <body class="bg-[#000000] text-premium antialiased font-sans min-h-screen">
-    <!-- Loader -->
     <div id="loader">
-        <span class="loading-text">Loading</span>
+        <span class="loading-text">Chargement</span>
     </div>
     <header class="sticky top-0 z-50 bg-[#000000] border-b border-neutral-dark py-4 shadow-md">
         <div class="max-w-2xl lg:max-w-3xl mx-auto flex justify-center items-center px-4 lg:px-8">
@@ -156,34 +155,34 @@
     </header>
     <main class="max-w-2xl lg:max-w-3xl mx-auto px-6 py-8 lg:px-8">
         <section id="introduction" class="mb-12 text-center flex flex-col items-center">
-            <img id="headerImage" src="" alt="Header" class="mx-auto rounded-xl mb-6 w-[80%] md:w-[40%] lg:w-[40%]">
-            <h2 class="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-premium">Welcome to <span id="apiName"></span></h2>
+            <img id="headerImage" src="" alt="En-tête" class="mx-auto rounded-xl mb-6 w-[80%] md:w-[40%] lg:w-[40%]">
+            <h2 class="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-premium">Bienvenue sur <span id="apiName"></span></h2>
             <div class="bg-[#000000] border border-neutral-dark rounded-lg p-6 shadow-md transition-all hover:shadow-premium w-full">
                 <p id="apiDescription" class="text-base text-neutral-light mb-6"></p>
                 <p class="text-base text-neutral-light mb-4">
-                    Our platform provides a streamlined API documentation system, enabling developers to explore and test endpoints efficiently in real-time.
+                    Notre plateforme fournit un système de documentation API simplifiée, permettant aux développeurs d'explorer et de tester les points d'accès efficacement et en temps réel.
                 </p>
                 <p class="text-base text-neutral-light">
-                    Featuring <span id="totalEndpoints"></span> endpoints across <span id="totalCategories"></span> categories, supported by a robust, always-available infrastructure.
+                    Proposant <span id="totalEndpoints"></span> points d'accès répartis dans <span id="totalCategories"></span> catégories, soutenus par une infrastructure robuste et toujours disponible.
                 </p>
             </div>
             <div class="w-full mt-6">
-                <a href="/docs" class="block px-8 py-3 bg-[#000000] border border-neutral-dark text-neutral-light font-medium hover:bg-gray-700 text-sm rounded-lg transition-all hover:shadow-premium text-center">
-                    Get Started
+                <a href="/docs" class="block px-8 py-3 bg-[#000000] border border-neutral-dark text-neutral-light font-medium hover:bg-gray-800 text-sm rounded-lg transition-all hover:shadow-premium text-center">
+                    Commencer
                     <i class="material-icons align-middle text-sm ml-2">arrow_forward</i>
                 </a>
             </div>
         </section>
         <section id="features" class="mb-12">
-            <h2 class="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-premium">Key Features</h2>
+            <h2 class="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-premium">Fonctionnalités clés</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-[#000000] border border-neutral-dark p-6 rounded-lg shadow-md transition-all hover:shadow-premium">
                     <div class="w-8 h-8 bg-gradient-premium flex items-center justify-center mb-4 rounded-lg transition-all hover:opacity-90">
                         <i class="material-icons text-white text-xl">flash_on</i>
                     </div>
-                    <h3 class="text-base font-medium text-white mb-2">Lightning Fast</h3>
+                    <h3 class="text-base font-medium text-white mb-2">Ultra rapide</h3>
                     <p class="text-sm text-neutral-light">
-                        Optimized endpoints delivering low-latency responses for efficient application integration.
+                        Points d'accès optimisés offrant des réponses à faible latence pour une intégration efficace à vos applications.
                     </p>
                 </div>
 
@@ -191,9 +190,9 @@
                     <div class="w-8 h-8 bg-gradient-premium flex items-center justify-center mb-4 rounded-lg transition-all hover:opacity-90">
                         <i class="material-icons text-white text-xl">lock_open</i>
                     </div>
-                    <h3 class="text-base font-medium text-white mb-2">No Authentication Required</h3>
+                    <h3 class="text-base font-medium text-white mb-2">Sans authentification</h3>
                     <p class="text-sm text-neutral-light">
-                        Immediate access without the need for authentication setup or management.
+                        Accès immédiat sans avoir besoin de configurer ou gérer une authentification.
                     </p>
                 </div>
 
@@ -201,56 +200,56 @@
                     <div class="w-8 h-8 bg-gradient-premium flex items-center justify-center mb-4 rounded-lg transition-all hover:opacity-90">
                         <i class="material-icons text-white text-xl">code</i>
                     </div>
-                    <h3 class="text-base font-medium text-white mb-2">Seamless Integration</h3>
+                    <h3 class="text-base font-medium text-white mb-2">Intégration fluide</h3>
                     <p class="text-sm text-neutral-light">
-                        Standardized JSON outputs complemented by detailed documentation and practical examples.
+                        Sorties JSON standardisées accompagnées d'une documentation détaillée et d'exemples pratiques.
                     </p>
                 </div>
             </div>
         </section>
         <section id="getting-started" class="mb-12">
-            <h2 class="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-premium">Getting Started</h2>
+            <h2 class="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-premium">Guide de démarrage</h2>
             <div class="bg-[#000000] border border-neutral-dark rounded-lg p-6 shadow-md transition-all hover:shadow-premium">
                 <ol class="space-y-6">
                     <li class="flex">
                         <div class="flex-shrink-0 w-8 h-8 bg-gradient-premium text-white font-bold text-center leading-8 mr-4 rounded-lg transition-all hover:opacity-90">1</div>
                         <div>
-                            <h3 class="font-bold text-white">Select a Category</h3>
-                            <p class="text-neutral-light text-base">Navigate through our categorized APIs via the sidebar to find the appropriate endpoints.</p>
+                            <h3 class="font-bold text-white">Sélectionnez une catégorie</h3>
+                            <p class="text-neutral-light text-base">Naviguez parmi nos API classées par catégories via le menu latéral pour trouver les points d'accès appropriés.</p>
                         </div>
                     </li>
                     <li class="flex">
                         <div class="flex-shrink-0 w-8 h-8 bg-gradient-premium text-white font-bold text-center leading-8 mr-4 rounded-lg transition-all hover:opacity-90">2</div>
                         <div>
-                            <h3 class="font-bold text-white">Review Documentation</h3>
-                            <p class="text-neutral-light text-base">Examine parameters, response structures, and implementation examples.</p>
+                            <h3 class="font-bold text-white">Consultez la documentation</h3>
+                            <p class="text-neutral-light text-base">Examinez les paramètres, la structure des réponses et les exemples d'intégration.</p>
                         </div>
                     </li>
                     <li class="flex">
                         <div class="flex-shrink-0 w-8 h-8 bg-gradient-premium text-white font-bold text-center leading-8 mr-4 rounded-lg transition-all hover:opacity-90">3</div>
                         <div>
-                            <h3 class="font-bold text-white">Implement Requests</h3>
-                            <p class="text-neutral-light text-base">Execute HTTP calls and incorporate JSON responses into your applications.</p>
+                            <h3 class="font-bold text-white">Exécutez vos requêtes</h3>
+                            <p class="text-neutral-light text-base">Effectuez des appels HTTP et intégrez les réponses JSON directement dans vos applications.</p>
                         </div>
                     </li>
                 </ol>
             </div>
         </section>
         <section id="terms-of-service" class="mb-12">
-            <h2 class="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-premium">Terms of Service</h2>
+            <h2 class="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-premium">Conditions d'utilisation</h2>
             <div class="bg-[#000000] border border-neutral-dark rounded-lg p-6 shadow-md transition-all hover:shadow-premium">
                 <p class="text-base text-neutral-light mb-4">
-                    By utilizing <span id="apiNameTerms"></span>, you agree to adhere to these terms:
+                    En utilisant <span id="apiNameTerms"></span>, vous acceptez de respecter ces conditions :
                 </p>
                 <ul class="list-disc list-inside space-y-2 text-base text-neutral-light">
-                    <li>Employ the APIs in a responsible manner, complying with all relevant laws and regulations.</li>
-                    <li>Avoid service abuse, including exceeding established rate limits.</li>
-                    <li>We retain the right to alter or terminate the service without prior notice.</li>
-                    <li>Data and content from the APIs are provided for informational use only.</li>
-                    <li>We disclaim liability for any damages resulting from API usage.</li>
+                    <li>Utiliser les API de manière responsable, en respectant toutes les lois et réglementations en vigueur.</li>
+                    <li>Éviter tout abus de service, y compris le dépassement des limites de débit établies.</li>
+                    <li>Nous nous réservons le droit de modifier ou de d'interrompre le service sans préavis.</li>
+                    <li>Les données et contenus des API sont fournis à titre informatif uniquement.</li>
+                    <li>Nous déclinons toute responsabilité pour les dommages résultant de l'utilisation de l'API.</li>
                 </ul>
                 <p class="text-base text-neutral-light mt-4">
-                    For complete terms, reach out via our Telegram channel.
+                    Pour consulter l'intégralité des conditions, contactez-nous via notre canal Telegram.
                 </p>
             </div>
         </section>
@@ -258,33 +257,33 @@
             <div class="bg-[#000000] border border-neutral-dark rounded-lg overflow-hidden shadow-md transition-all hover:shadow-premium">
                 <div class="p-8 md:p-12 bg-[#000000]">
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span class="text-xs text-neutral-light font-medium">READY TO BUILD</span>
+                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span class="text-xs text-neutral-light font-medium">PRÊT À DÉVELOPPER</span>
                     </div>
-                    <h2 class="text-2xl md:text-3xl font-medium text-white mb-3">Start Building Today</h2>
+                    <h2 class="text-2xl md:text-3xl font-medium text-white mb-3">Commencez à créer dès aujourd'hui</h2>
                     <p class="text-neutral-light text-sm mb-6 max-w-xl">
-                        Join a global community of developers leveraging our APIs. Gain immediate access to robust endpoints with extensive documentation.
+                        Rejoignez une communauté mondiale de développeurs tirant parti de nos API. Obtenez un accès immédiat à des points d'accès robustes avec une documentation complète.
                     </p>
                     <div class="flex flex-col sm:flex-row items-start gap-3">
                         <a href="/docs" class="w-full sm:w-auto px-6 py-3 bg-gradient-premium text-white font-medium hover:opacity-90 text-sm rounded-md flex items-center justify-center gap-2 transition-all hover:shadow-premium">
                             <i class="material-icons text-base text-white">description</i>
-                            View Documentation
+                            Voir la documentation
                         </a>
                     </div>
                 </div>
-                <div class="bg-[#000000] border-t border-gray-800 px-8 py-4">
+                <div class="bg-[#000000] border-t border-gray-900 px-8 py-4">
                     <div class="flex flex-wrap items-center gap-6 text-xs text-gray-500">
                         <div class="flex items-center gap-2">
                             <i class="material-icons text-sm bg-clip-text text-transparent bg-gradient-premium">check_circle</i>
-                            <span>No Authentication</span>
+                            <span>Sans authentification</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="material-icons text-sm bg-clip-text text-transparent bg-gradient-premium">check_circle</i>
-                            <span>100% Free</span>
+                            <span>100% Gratuit</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="material-icons text-sm bg-clip-text text-transparent bg-gradient-premium">check_circle</i>
-                            <span>JSON Responses</span>
+                            <span>Réponses JSON</span>
                         </div>
                     </div>
                 </div>
@@ -295,27 +294,27 @@
         <div class="max-w-2xl lg:max-w-3xl mx-auto px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                    <h3 class="font-semibold text-white mb-3">About</h3>
+                    <h3 class="font-semibold text-white mb-3">À propos</h3>
                     <p id="aboutText" class="text-sm text-neutral-light leading-relaxed">
-                        Our interactive platform enables seamless exploration and real-time testing of our extensive API endpoints.
+                        Notre plateforme interactive permet une exploration fluide et des tests en temps réel de notre vaste collection de points d'accès API.
                     </p>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-white mb-3">Connect</h3>
+                    <h3 class="font-semibold text-white mb-3">Connexion</h3>
                     <div class="flex gap-3">
-                        <a id="telegramLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-600 text-neutral-light hover:text-white transition-all">
+                        <a id="telegramLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-800 text-neutral-light hover:text-white transition-all">
                             <i class="fab fa-telegram-plane text-lg"></i>
                         </a>
-                        <a id="messengerLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-600 text-neutral-light hover:text-white transition-all">
+                        <a id="messengerLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-800 text-neutral-light hover:text-white transition-all">
                             <i class="fab fa-facebook-messenger text-lg"></i>
                         </a>
-                        <a id="githubLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-600 text-neutral-light hover:text-white transition-all">
+                        <a id="githubLink" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-neutral-dark hover:bg-gray-800 text-neutral-light hover:text-white transition-all">
                             <i class="fab fa-github text-lg"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="pt-8 border-t border-gray-800 text-left">
+            <div class="pt-8 border-t border-gray-900 text-left">
                 <p class="text-sm text-gray-500" id="footerCopyright"></p>
             </div>
         </div>
@@ -330,7 +329,7 @@
                 document.querySelector('meta[name="description"]').content = setData.description;
                 document.querySelector('meta[property="og:description"]').content = setData.description;
                 document.querySelector('link[rel="icon"]').href = setData.icon;
-                document.getElementById('footerCopyright').textContent = `© ${new Date().getFullYear()} ${setData.name}. All rights reserved.`;
+                document.getElementById('footerCopyright').textContent = `© ${new Date().getFullYear()} ${setData.name}. Tous droits réservés.`;
                 document.getElementById('telegramLink').href = setData.telegram;
                 document.getElementById('messengerLink').href = setData.messenger;
                 document.getElementById('githubLink').href = setData.github;
